@@ -28,23 +28,24 @@ public class CubeMaker {
 	private static Color color;
 	private StringToColor stringToColor = new StringToColor();
 
-	private int[] side1X = {};
-	private int[] side1Y = {};
+	private int[] side1X = { 185, 350, 350, 185, 20, 20, 20, 185, 350 };
+	private int[] side1Y = { 675, 675, 840, 840, 840, 675, 510, 510, 510 };
 
-	private int[] side2X = {};
-	private int[] side2Y = {};
+	private int[] side2X = { 680, 845, 845, 680, 515, 515, 515, 680, 845 };
+	private int[] side2Y = { 675, 675, 840, 840, 840, 675, 510, 510, 510 };
 
-	private int[] side3X = {};
-	private int[] side3Y = {};
+	private int[] side3X = { 1175, 1340, 1340, 1175, 1010, 1010, 1010, 1175, 1340 };
+	private int[] side3Y = { 675, 675, 840, 840, 840, 675, 510, 510, 510 };
 
-	private int[] side4X = {};
-	private int[] side4Y = {};
+	private int[] side4X = { 1670, 1835, 1835, 1670, 1505, 1505, 1505, 1670, 1835 };
+	private int[] side4Y = { 675, 675, 840, 840, 840, 675, 510, 510, 510 };
 
-	private int[] side5X = {};
-	private int[] side5Y = {};
+	private int[] side5X = { 680, 845, 845, 680, 515, 515, 515, 680, 845 };
+	private int[] side5Y = { 180, 180, 345, 345, 345, 180, 15, 15, 15 };
 
-	private int[] side6X = {};
-	private int[] side6Y = {};
+	private int[] side6X = { 680, 845, 845, 680, 515, 515, 515, 680, 845 };
+	private int[] side6Y = { 1175, 1175, 1340, 1340, 1340, 1175, 1010, 1010, 1010 };
+
 
 	public CubeMaker(String[] side1, String[] side2, String[] side3, String[] side4, String[] side5, String[] side6)
 			throws IOException {
