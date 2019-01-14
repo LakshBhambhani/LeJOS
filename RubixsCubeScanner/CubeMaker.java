@@ -1,38 +1,19 @@
 import java.awt.Color;
-import java.util.Scanner;
 import java.util.List;
 import java.awt.Graphics2D;
-import java.awt.Point;
 import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
-import java.util.Arrays;
-
 import javax.imageio.ImageIO;
-import javax.swing.Box.Filler;
-import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileNameExtensionFilter;
-import java.io.BufferedReader; 
-import java.io.FileReader; 
-import java.io.IOException; 
 import java.nio.charset.StandardCharsets; 
 import java.nio.file.Files; 
 import java.nio.file.Paths; 
-import java.util.ArrayList; 
 import java.util.Collections; 
-import java.util.List;
-import java.util.StringTokenizer;
+
 
 public class CubeMaker {
-
-	private Color color;
 
 	private int[] side1X = {185, 350, 350, 185, 20, 20, 20, 185, 350};
 	private int[] side1Y = {675, 675, 840, 840, 840, 675, 510, 510, 510};
@@ -67,9 +48,9 @@ public class CubeMaker {
 		Graphics2D g2d = img.createGraphics();
 
 		List<String> lines = Collections.emptyList(); 
-		String data;
 		
-		try { lines = Files.readAllLines(Paths.get("data.txt"), StandardCharsets.UTF_8); } 
+		
+		try {lines = Files.readAllLines(Paths.get("data.txt"), StandardCharsets.UTF_8); } 
 		catch (IOException e) {  
 			e.printStackTrace(); } 
 		
@@ -101,8 +82,7 @@ public class CubeMaker {
 			
 			colour = result.get(i).toString();
 			System.out.println(colour);
-			String num = StringToInt.StringToInt(colour);
-			Color color = stringToColor.StringToColor(colour); //Color.decode(num);//
+			Color color = stringToColor.StringToColor(colour); 
 			System.out.println(color);
 			g2d.setColor(color);
 			g2d.fillRect(object.side1X[i], object.side1Y[i], 145, 145);
