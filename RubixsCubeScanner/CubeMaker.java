@@ -36,7 +36,6 @@ public class CubeMaker {
 	public static void main(String[] args) throws IOException {
 		
 		StringToColor stringToColor = new StringToColor();
-		StringToInt StringToInt = new StringToInt();
 		CubeMaker object = new CubeMaker();
 		
 		BufferedImage img = null;
