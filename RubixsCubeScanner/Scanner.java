@@ -20,63 +20,80 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import javax.imageio.ImageIO;
+
+import lejos.hardware.Button;
 import lejos.hardware.port.SensorPort;
 import lejos.utility.Delay;
 
 public class Scanner {
 
-	ColorSensor sensor = new ColorSensor(SensorPort.S3);
-	
-	private String[] side1 = new String[9];
-	private String[] side2 = new String[9];
-	private String[] side3 = new String[9];
-	private String[] side4 = new String[9];
-	private String[] side5 = new String[9];
-	private String[] side6 = new String[9];
+	private static ColorSensor sensor = new ColorSensor(SensorPort.S3);
+	FileOutputStream out = null;
+	File file = new File("data.txt");
+
+	private ArrayList<String> side1 = new ArrayList<String>();
 
 	public static void main(String[] args) throws IOException {
 
-		
 		Scanner object = new Scanner();
-		
 
 		// side 1
-		object.side1 = object.getSidesColors(object.side1);
-		
-		// side 2
-		object.side2 = object.getSidesColors(object.side2);
-
-		// side 3
-		object.side3 = object.getSidesColors(object.side3);
-
-		// side 4
-		object.side4 = object.getSidesColors(object.side4);
-
-		// side 5
-		object.side5 = object.getSidesColors(object.side5);
-
-		// side 6
-		object.side6 = object.getSidesColors(object.side6);
-		
-		CubeMaker object2 = new CubeMaker(object.side1, object.side2, object.side3, object.side4, object.side5, object.side6);
-		
-	}
-	
-	public String[] getSidesColors(String[] side) {
-		
 		sensor.setColorIdMode();
 		sensor.setFloodLight(false);
-		
-		for(int i = 0; i < 9; i++) {
-			side[i] = ColorSensor.colorName(sensor.getColorID());
-			Delay.msDelay(1000);
+
+		for (int i = 0; i < 9; i++) {
+	
+			object.side1.add(ColorSensor.colorName(sensor.getColorID()));
+			System.out.println("Scanning :" + object.side1.get(i).length() + " " + object.side1.get(i));
+			System.out.println("Delay started");
+			Delay.msDelay(2000);
 		}
-		
-		return side;
+
+		try {
+			object.out = new FileOutputStream(object.file);
+		} catch (IOException e) {
+			System.err.println("Failed to create output stream");
+			Button.waitForAnyPress();
+			System.exit(1);
+		}
+
+		DataOutputStream dataOut = new DataOutputStream(object.out);
+
+		try {
+			for (int i = 0; i < object.side1.size(); i++) {
+				dataOut.writeChars(object.side1.get(i) + ",");
+			}
+			object.out.close();
+		} catch (IOException e) {
+			System.err.println("Failed to write to output stream");
+			Button.waitForAnyPress();
+			System.exit(1);
+		}
+
+//		// side 2
+//		object.side2 = object.getSidesColors(object.side2);
+//
+//		// side 3
+//		object.side3 = object.getSidesColors(object.side3);
+//
+//		// side 4
+//		object.side4 = object.getSidesColors(object.side4);
+//
+//		// side 5
+//		object.side5 = object.getSidesColors(object.side5);
+//
+//		// side 6
+//		object.side6 = object.getSidesColors(object.side6);
+
+
 	}
+
 }
