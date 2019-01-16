@@ -41,6 +41,6 @@ Use ObstacleAvoider.java to code a robot that avoids obstacles
 Use this project to get an image of the robot's surroundings. Requires 2 Motors and 1 IR Sensor
 
 
-## Rubix's Cube Scanner (under Testing)
-Use this project to build a LEGO EV3 Rubixs cube Solver bot and then implement this code to scan a cube that you provide to your robot. Currently scans and generates the representation of only 1 side of the cube.
+## Rubix's Cube Scanner
+Use this project to build a LEGO EV3 Rubixs cube Solver bot and then implement this code to scan a cube that you provide to your robot. Currently works by only moving the colour sensor by hand.
 
