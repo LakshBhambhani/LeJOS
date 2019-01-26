@@ -9,7 +9,7 @@ Use the Scanner class to scan your rubix's cube. A data.txt file will be generat
 Download the data.txt file and add it in your project directory
 
 ### Step 3
-Run Cube Maker class to generate a 2D representation of your cube
+Run Cube Maker class to generate a 2D representation of your cube. You can use SampleTest.jpg if you dont have a cube
 
 
 ## NOTE: You might have to change some code in CubeMaker.class if your cube has different colours than mine.
